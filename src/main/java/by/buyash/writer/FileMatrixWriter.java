@@ -28,16 +28,30 @@ public class FileMatrixWriter {
     }
 
     public void writeToFile(MatrixThread[] matrixThreads) throws MatrixWriterException {
-        // TODO: 14.02.2020 check input params
+
+        verifyMatrixThreads(matrixThreads);
+
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, true))) {
             Matrix matrix = Matrix.INSTANCE;
             bufferedWriter.write(matrix.toString());
             for (MatrixThread thread : matrixThreads) {
-                bufferedWriter.write("Thread "+thread.getName() + ": " + thread.getRowAndColumnElementsSum() + "\n");
+                bufferedWriter.write("Thread " + thread.getName() + ": " + thread.getRowAndColumnElementsSum() + "\n");
             }
         } catch (IOException e) {
             logger.warn(e);
             throw new MatrixWriterException(e);
+        }
+    }
+
+    private void verifyMatrixThreads(MatrixThread[] matrixThreads) throws MatrixWriterException {
+        if (matrixThreads == null) {
+            throw new MatrixWriterException("Null matrix threads array");
+        }
+
+        for (MatrixThread matrixThread : matrixThreads) {
+            if (matrixThread == null) {
+                throw new MatrixWriterException("Null matrix thread in array");
+            }
         }
     }
 }
