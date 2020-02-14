@@ -1,6 +1,7 @@
 package by.buyash.constant;
 
 public enum StringConstant {
+
     OUTPUT_FILE_PATH("output.txt");
 
     private String value;

@@ -1,6 +1,7 @@
 package by.buyash.entity;
 
 import by.buyash.constant.IntegerConstant;
+import by.buyash.exception.MatrixIndexOutOfBoundsException;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -24,8 +25,10 @@ public enum Matrix {
         }
     }
 
-    public void setNumberAt(int row, int column, int number) {
-        //todo checking
+    public void setNumberAt(int row, int column, int number) throws MatrixIndexOutOfBoundsException {
+        verifyIndexBounds(row);
+        verifyIndexBounds(column);
+
         ReentrantLock lock = lockers[row][column];
         lock.lock();
         matrix[row][column] = number;
@@ -51,5 +54,11 @@ public enum Matrix {
             stringBuilder.append("]").append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    private void verifyIndexBounds(int index) throws MatrixIndexOutOfBoundsException {
+        if (index < 0 || index >= size) {
+            throw new MatrixIndexOutOfBoundsException();
+        }
     }
 }

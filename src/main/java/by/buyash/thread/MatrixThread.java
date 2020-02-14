@@ -1,6 +1,9 @@
 package by.buyash.thread;
 
 import by.buyash.entity.Matrix;
+import by.buyash.exception.MatrixIndexOutOfBoundsException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
@@ -12,6 +15,8 @@ public class MatrixThread extends Thread {
     private int number;
     private int rowAndColumnElementsSum;
 
+    private static Logger logger = LogManager.getLogger();
+
     public MatrixThread(int diagonalIndex, int number) {
         super(String.valueOf(number));
         this.diagonalIndex = diagonalIndex;
@@ -21,17 +26,22 @@ public class MatrixThread extends Thread {
     @Override
     public void run() {
         System.out.println("Here we go\n");
-        matrix.setNumberAt(diagonalIndex, diagonalIndex, number);
 
-        // TODO: 14.02.2020 optimize
-        Random random = new Random();
-        if (random.nextBoolean()) {
-            matrix.setNumberAt(diagonalIndex, generateRandomNumber(), number);
-        } else {
-            matrix.setNumberAt(generateRandomNumber(), diagonalIndex, number);
+        try {
+            matrix.setNumberAt(diagonalIndex, diagonalIndex, number);
+
+            Random random = new Random();
+            if (random.nextBoolean()) {
+                matrix.setNumberAt(diagonalIndex, generateRandomNumber(), number);
+            } else {
+                matrix.setNumberAt(generateRandomNumber(), diagonalIndex, number);
+            }
+
+            calculateRowAndColumnElementsSum();
+
+        } catch (MatrixIndexOutOfBoundsException e) {
+            logger.warn(e);
         }
-
-        calculateRowAndColumnElementsSum();
         System.out.println("From " + getName() + Matrix.INSTANCE.toString());
         System.out.println("Ah shit here we go again " + rowAndColumnElementsSum + " \n");
     }
