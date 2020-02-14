@@ -25,8 +25,6 @@ public class MatrixThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Here we go\n");
-
         try {
             matrix.setNumberAt(diagonalIndex, diagonalIndex, number);
 
@@ -42,8 +40,6 @@ public class MatrixThread extends Thread {
         } catch (MatrixIndexOutOfBoundsException e) {
             logger.warn(e);
         }
-        System.out.println("From " + getName() + Matrix.INSTANCE.toString());
-        System.out.println("Ah shit here we go again " + rowAndColumnElementsSum + " \n");
     }
 
     public int getRowAndColumnElementsSum() {
