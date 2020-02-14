@@ -1,4 +1,4 @@
-package by.buyash.constant;
+package by.buyanova.constant;
 
 public enum StringConstant {
 

@@ -1,4 +1,4 @@
-package by.buyash.exception;
+package by.buyanova.exception;
 
 public class MatrixIndexOutOfBoundsException extends Exception {
     public MatrixIndexOutOfBoundsException() {

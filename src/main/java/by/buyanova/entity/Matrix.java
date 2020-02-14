@@ -1,7 +1,7 @@
-package by.buyash.entity;
+package by.buyanova.entity;
 
-import by.buyash.constant.IntegerConstant;
-import by.buyash.exception.MatrixIndexOutOfBoundsException;
+import by.buyanova.constant.IntegerConstant;
+import by.buyanova.exception.MatrixIndexOutOfBoundsException;
 
 import java.util.concurrent.locks.ReentrantLock;
 

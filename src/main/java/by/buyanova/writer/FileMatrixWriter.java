@@ -1,8 +1,8 @@
-package by.buyash.writer;
+package by.buyanova.writer;
 
-import by.buyash.entity.Matrix;
-import by.buyash.exception.MatrixWriterException;
-import by.buyash.thread.MatrixThread;
+import by.buyanova.entity.Matrix;
+import by.buyanova.exception.MatrixWriterException;
+import by.buyanova.thread.MatrixThread;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

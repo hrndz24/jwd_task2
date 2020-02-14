@@ -1,7 +1,7 @@
-package by.buyash.thread;
+package by.buyanova.thread;
 
-import by.buyash.entity.Matrix;
-import by.buyash.exception.MatrixIndexOutOfBoundsException;
+import by.buyanova.entity.Matrix;
+import by.buyanova.exception.MatrixIndexOutOfBoundsException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
