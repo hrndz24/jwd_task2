@@ -1,13 +1,13 @@
 package by.buyash.constant;
 
-public enum Constant {
+public enum IntegerConstant {
 
     MATRIX_SIZE(5),
-    Y_CONSTANT(2);
+    THREAD_GROUP_QUANTITY(2);
 
     private int value;
 
-    Constant(int value) {
+    IntegerConstant(int value) {
         this.value = value;
     }
 
